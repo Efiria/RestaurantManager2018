@@ -266,3 +266,8 @@ Code/.vs/RestaurantManager/v15/Server/sqlite3/storage.ide-wal
 Code/RestaurantManager/obj/Debug/RestaurantManager.csproj.CoreCompileInputs.cache
 Code/RestaurantManager/obj/Debug/RestaurantManager.csproj.CoreCompileInputs.cache
 Code/RestaurantManager/obj/Debug/RestaurantManager.csproj.CoreCompileInputs.cache
+*.cache
+Code/TestRestaurantManager/obj/Debug/TestRestaurantManager.csprojAssemblyReference.cache
+Code/TestRestaurantManager/obj/Debug/TestRestaurantManager.csproj.CoreCompileInputs.cache
+Code/RestaurantManager/obj/Debug/RestaurantManager.csproj.CoreCompileInputs.cache
+Code/RestaurantManager/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
