@@ -19,7 +19,6 @@ namespace RestaurantManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            BDD.connectionBDD();
         }
     }
 }

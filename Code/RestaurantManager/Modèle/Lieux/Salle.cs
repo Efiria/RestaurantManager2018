@@ -8,5 +8,6 @@ namespace RestaurantManager.Modèle.Lieux
 {
     class Salle
     {
+
     }
 }
