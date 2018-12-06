@@ -8,13 +8,13 @@ namespace RestaurantManager.Modèle.Personnes.Salle
 {
     public class Client : Personne
     {
-        private string caractere;
-        private string gout;
+        private string Caractere { get; set; }
+        private string gout { get; set; }
 
 
-        public Client()
+        public Client(string[] args)
         {
-
+            
         }
     }
 }
