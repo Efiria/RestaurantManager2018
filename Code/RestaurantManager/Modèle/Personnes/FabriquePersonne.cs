@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantManager.Modèle.Personnes.Salle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,38 @@ namespace RestaurantManager.Modèle.Personnes
 {
     class FabriquePersonne
     {
-        public Personne Create(string type, string[] args)
+        public enum TypeP
         {
+            Client,
+            Employe
+        }
 
-            return null;
+        public enum CaracteresClient
+        {
+            Lent,
+            Presse
+        }
+
+        public enum RolesEmployes
+        {
+            MaitreDHotel,
+            ChefDeRang,
+            Serveur,
+            CommisDeSalle,
+            ChefDeCuisine,
+            Cuisinier,
+            CommisDeCuisine,
+            Plongeur
+        }
+
+
+        public Personne Create(TypeP type, string[] args)
+        {
+            if (type == TypeP.Client)
+            {
+                Client client = new Client(args);
+
+            }
         }
     }
 }

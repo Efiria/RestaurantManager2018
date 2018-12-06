@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes
 {
-    abstract class Personne
+    public abstract class Personne
     {
     }
 }

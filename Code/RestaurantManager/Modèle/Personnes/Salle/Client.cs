@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes.Salle
 {
-    class Client : Personne
+    public class Client : Personne
     {
+        private string caractere;
+        private string gout;
+
+
+        public Client()
+        {
+
+        }
     }
 }

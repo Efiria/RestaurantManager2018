@@ -66,6 +66,7 @@
     <Compile Include="Modèle\Personnes\FabriquePersonne.cs" />
     <Compile Include="Modèle\Personnes\Personne.cs" />
     <Compile Include="Modèle\Personnes\Salle\ChefDeRang.cs" />
+    <Compile Include="Modèle\Personnes\Salle\Client.cs" />
     <Compile Include="Modèle\Personnes\Salle\CommisDeSalle.cs" />
     <Compile Include="Modèle\Personnes\Salle\MaitreDHotel.cs" />
     <Compile Include="Modèle\Personnes\Salle\Serveur.cs" />
