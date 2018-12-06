@@ -1,0 +1,9 @@
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.exe.config
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.exe
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.pdb
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csprojAssemblyReference.cache
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Properties.Resources.resources
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.GenerateResource.cache
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.CoreCompileInputs.cache
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.exe
+C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.pdb

@@ -54,7 +54,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Modèle\BDD\BDD.cs" />
+    <Compile Include="Modèle\Lieux\Table.cs" />
+    <Compile Include="Modèle\Lieux\Cuisine.cs" />
     <Compile Include="Modèle\Lieux\Restaurant.cs" />
+    <Compile Include="Modèle\Lieux\Salle.cs" />
     <Compile Include="Modèle\Materiel\StockManager.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\ChefDeCuisine.cs" />
     <Compile Include="Modèle\Personnes\Salle\MaitreDHotel.cs" />
