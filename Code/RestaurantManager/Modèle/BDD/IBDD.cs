@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.BDD
 {
-    interface IBDD
+    public interface IBDD
     {
         void getRecette();
+        void getReservation();
+
+        void setReservation(string Nom, int nbPersonne, int heure);
     }
 }

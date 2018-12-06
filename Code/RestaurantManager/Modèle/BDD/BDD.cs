@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 
@@ -62,6 +63,35 @@ namespace RestaurantManager.Modèle.BDD
 
                     }
                     reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creer une reservation pour un client
+        /// </summary>
+        public void setReservation(string Nom, int nbPersonne, int heure)
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO dbo.ReservationTable (NomReservation,NbPersonne,Horaire) " +
+                    "VALUES (@nomClient,@nombre,@horaire)", connexion);
+
+                try
+                {
+                    command.Parameters.Add("@nomClient", SqlDbType.VarChar, 30).Value = Nom;
+                    command.Parameters.Add("@nombre", SqlDbType.Int).Value = nbPersonne;
+                    command.Parameters.Add("@horaire", SqlDbType.Int).Value = heure;
+
+                    connexion.Open();
+                    command.ExecuteNonQuery();
+                    connexion.Close();
                 }
                 catch (Exception e)
                 {

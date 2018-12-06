@@ -19,7 +19,9 @@ namespace RestaurantManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            BDD.connectionBDD();
+            IBDD setReservation = new BDD();
+            setReservation.setReservation("Bruno",3,40);
+
         }
     }
 }

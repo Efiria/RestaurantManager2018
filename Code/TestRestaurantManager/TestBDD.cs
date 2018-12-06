@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestaurantManager.Modèle.Lieux;
+using RestaurantManager.Modèle.BDD;
 
 namespace TestRestaurantManager
 {
