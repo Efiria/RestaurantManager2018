@@ -12,3 +12,7 @@ RestaurantManager/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.ide-shm
 *.ide-wal
 .vs/RestaurantManager/v15/.suo
+Code/.vs/RestaurantManager/v15/.suo
+*.ide-shm
+Code/RestaurantManager/obj/Debug/RestaurantManager.csproj.CoreCompileInputs.cache
+Code/.vs/RestaurantManager/v15/Server/sqlite3/storage.ide-shm
