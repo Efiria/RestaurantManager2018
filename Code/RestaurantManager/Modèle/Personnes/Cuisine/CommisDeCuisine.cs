@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManager.Modèle.Personnes.Salle
+namespace RestaurantManager.Modèle.Personnes
 {
-    class MaitreDHotel : Personne
+    class CommisDeCuisine : Personne
     {
     }
 }
