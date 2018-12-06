@@ -7,8 +7,9 @@
 -- Table: Recette
 ------------------------------------------------------------*/
 CREATE TABLE Recette(
-	ID    INT IDENTITY (1,1) NOT NULL ,
-	Nom   TEXT  NOT NULL  ,
+	ID     INT IDENTITY (1,1) NOT NULL ,
+	Nom    TEXT  NOT NULL ,
+	Prix   INT  NOT NULL  ,
 	CONSTRAINT Recette_PK PRIMARY KEY (ID)
 );
 
@@ -62,6 +63,19 @@ CREATE TABLE Materiel(
 	Quantite   INT  NOT NULL  ,
 	CONSTRAINT Materiel_PK PRIMARY KEY (ID)
 );
+
+
+/*------------------------------------------------------------
+-- Table: ComptaCommande
+------------------------------------------------------------*/
+CREATE TABLE ComptaCommande(
+	ID                INT IDENTITY (1,1) NOT NULL ,
+	IDRecette         INT  NOT NULL ,
+	NomRecette        TEXT  NOT NULL ,
+	QuantiteRecette   INT  NOT NULL  ,
+	CONSTRAINT ComptaCommande_PK PRIMARY KEY (ID)
+);
+
 
 
 
