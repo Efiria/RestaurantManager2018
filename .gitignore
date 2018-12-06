@@ -1,8 +1,14 @@
 
 *.ide-wal
+.vs/*
 .vs/RestaurantManager/v15/.suo
 .vs/RestaurantManager/v15/.suo
 .vs/RestaurantManager/v15/Server/sqlite3/storage.ide
 *.ide-shm
 *.ide-wal
 RestaurantManager/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+.vs/RestaurantManager/v15/.suo
+*.ide
+*.ide-shm
+*.ide-wal
+.vs/RestaurantManager/v15/.suo
