@@ -19,8 +19,8 @@ namespace RestaurantManager
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            IBDD setReservation = new BDD();
-
+            /*IBDD setReservation = new BDD();
+            setReservation.updateStock("Endive aux Noix");*/
 
         }
     }

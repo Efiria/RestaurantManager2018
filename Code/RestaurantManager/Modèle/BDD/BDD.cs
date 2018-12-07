@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -97,6 +98,41 @@ namespace RestaurantManager.Modèle.BDD
                 {
                     Console.WriteLine(e.Message);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Met a jour le stock de produits en fonction des commandes
+        /// </summary>
+        /// <param name="recette">Recette commander</param>
+        /// <param name="quantite">Nombre de la recette commander</param>
+        public void updateStock(string recette, int quantite = 1)
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                Dictionary<string, int> valeur = new Dictionary<string, int>();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.IngredientRecette WHERE NomRecette = @Nom", connexion);
+                command.Parameters.AddWithValue("@Nom", recette);
+
+                connexion.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    valeur.Add(reader[2].ToString(), (int)reader[3] * quantite);
+                }
+                reader.Close();
+
+                foreach (var item in valeur)
+                {
+                    SqlCommand commandUpdate = new SqlCommand("UPDATE StockIngredients SET Stock = Stock - @vStock WHERE Nom = @NomIngredient", connexion);
+                    commandUpdate.Parameters.AddWithValue("@vStock", item.Value);
+                    commandUpdate.Parameters.AddWithValue("@NomIngredient", item.Key);
+                    commandUpdate.ExecuteNonQuery();
+                }
+                connexion.Close();
             }
         }
     }
