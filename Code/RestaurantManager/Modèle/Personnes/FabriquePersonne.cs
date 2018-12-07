@@ -7,40 +7,31 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes
 {
-    class FabriquePersonne
+    public class FabriquePersonne
     {
-        public enum TypeP
-        {
-            Client,
-            Employe
-        }
-
-        public enum CaracteresClient
-        {
-            Lent,
-            Presse
-        }
-
-        public enum RolesEmployes
-        {
-            MaitreDHotel,
-            ChefDeRang,
-            Serveur,
-            CommisDeSalle,
-            ChefDeCuisine,
-            Cuisinier,
-            CommisDeCuisine,
-            Plongeur
-        }
+        Object[] var = { "test", } ; 
 
 
-        public Personne Create(TypeP type, string[] args)
+        public Personne CreatePersonne(TypeP type, Roles role, Object[] args)
         {
             if (type == TypeP.Client)
             {
-                Client client = new Client(args);
+                Client client = new Client();
+
+                return client;
 
             }
+            else if (type == TypeP.Employe)
+            {
+                switch (role)
+                {
+                    case Roles.ChefDeCuisine:
+                        break;
+                }
+            }
+
+            return null;
         }
+        
     }
 }

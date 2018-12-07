@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManager.Modèle.Personnes.Salle
+namespace RestaurantManager.Modèle.Personnes
 {
     public class Client : Personne
     {
-        private string Caractere { get; set; }
-        private string gout { get; set; }
+        public string Nom { get; set; }
+        public Caractere Caractere { get; set; }
+        public Gouts Gout { get; set; }
+        bool Reservation { get; set; } = false;
 
-
-        public Client(string[] args)
+        public Client()
         {
             
         }

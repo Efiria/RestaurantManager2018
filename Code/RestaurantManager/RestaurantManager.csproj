@@ -63,6 +63,7 @@
     <Compile Include="Modèle\Personnes\Cuisine\ChefDeCuisine.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\Cuisinier.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\Plongeur.cs" />
+    <Compile Include="Modèle\Personnes\EnumsPersonnes.cs" />
     <Compile Include="Modèle\Personnes\FabriquePersonne.cs" />
     <Compile Include="Modèle\Personnes\Personne.cs" />
     <Compile Include="Modèle\Personnes\Salle\ChefDeRang.cs" />
