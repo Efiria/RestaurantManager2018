@@ -20,7 +20,7 @@ namespace RestaurantManager
             Application.Run(new Form1());
 
             IBDD setReservation = new BDD();
-            setReservation.setReservation("Bruno",3,40);
+
 
         }
     }
