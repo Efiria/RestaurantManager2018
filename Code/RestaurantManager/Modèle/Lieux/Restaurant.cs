@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantManager.Vue;
 
 namespace RestaurantManager.Modèle.Lieux
 {
@@ -10,7 +11,7 @@ namespace RestaurantManager.Modèle.Lieux
     {
         private static Restaurant _instance;
         static readonly object instanceLock = new object();
-
+        
         private Restaurant()
         {
 

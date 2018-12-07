@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Lieux
 {
-    class Table
+    public class Table
     {
         int PosX { get; set; }
         int PosY { get; set; }
+        public int Size { get; set; }
+
+        public Table(int size)
+        {
+            this.Size = size;
+        }
 
     }
 }
