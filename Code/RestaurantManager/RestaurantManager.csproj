@@ -59,6 +59,8 @@
     <Compile Include="Modèle\Lieux\Restaurant.cs" />
     <Compile Include="Modèle\Lieux\Salle.cs" />
     <Compile Include="Modèle\Materiel\StockManager.cs" />
+    <Compile Include="Modèle\Personnes\AClient.cs" />
+    <Compile Include="Modèle\Personnes\AEmploye.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\CommisDeCuisine.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\ChefDeCuisine.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\Cuisinier.cs" />

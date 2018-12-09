@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes.Salle
 {
-    class CommisDeSalle : Personne
+    class CommisDeSalle : AEmploye
     {
+        public CommisDeSalle()
+        {
+                
+        }
     }
 }

@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes
 {
-    public class Client : AClient
+    public abstract class AEmploye
     {
-
-        public Client()
-        {
-            
-        }
+        public string Nom { get; set; }
+        public Roles Role { get; set; }
     }
 }

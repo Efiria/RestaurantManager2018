@@ -8,5 +8,6 @@ namespace RestaurantManager.Modèle.Personnes
 {
     public abstract class Personne
     {
+
     }
 }

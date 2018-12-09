@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes
 {
-    public enum TypeP
-    {
-        Client,
-        Employe
-    }
-
     public enum Roles
     {
-        Client,
         MaitreDHotel,
         ChefDeRang,
         Serveur,
