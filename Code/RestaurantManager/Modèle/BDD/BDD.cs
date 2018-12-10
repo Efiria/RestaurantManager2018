@@ -11,9 +11,10 @@ namespace RestaurantManager.Modèle.BDD
         /// <summary>
         /// Get Recette de la base de données
         /// </summary>
-        public void getRecette()
+        public List<string> getRecette()
         {
             string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+            List<string> recettes = new List<string>();
 
             using (SqlConnection connexion = new SqlConnection(connectionString))
             {
@@ -27,8 +28,8 @@ namespace RestaurantManager.Modèle.BDD
                     {
                         //Recupération des valeurs a ensuite stocker dans des variables
                         //0 = ID | 1 = Nom etc...
-                        Console.Write(reader[1]);
-                        Console.WriteLine(reader[2]);
+                        recettes.Add((string)reader[1]);
+                        //Console.WriteLine(reader[2]);
                     }
                     reader.Close();
                 }
@@ -37,6 +38,7 @@ namespace RestaurantManager.Modèle.BDD
                     Console.WriteLine(e.Message);
                 }
             }
+            return recettes;
         }
 
         /// <summary>
