@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Personnes.Cuisine
 {
-    class ChefDeCuisine : AEmploye
+    class Cuisinier: AEmploye
     {
-        public ChefDeCuisine()
+        public Cuisinier()
         {
 
         }
