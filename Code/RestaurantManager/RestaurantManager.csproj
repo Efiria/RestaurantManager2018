@@ -55,6 +55,7 @@
     <Compile Include="Modèle\Materiel\StockManager.cs" />
     <Compile Include="Modèle\Personnes\Cuisine\ChefDeCuisine.cs" />
     <Compile Include="Modèle\Personnes\Salle\MaitreDHotel.cs" />
+    <Compile Include="Modèle\TimeAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vue\ConfigDisplay.cs">

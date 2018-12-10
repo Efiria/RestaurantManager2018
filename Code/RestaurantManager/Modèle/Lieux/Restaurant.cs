@@ -18,7 +18,7 @@ namespace RestaurantManager.Modèle.Lieux
 
         public Salle Salle { get; private set; }
         public Cuisine Cuisine { get; private set; }
-        
+
         private Restaurant(RestaurantDisplay restaurantDisplay)
         {
             Observable += new DisplayEventHandler(restaurantDisplay.Display);
