@@ -15,5 +15,15 @@ namespace TestRestaurantManager
             Assert.IsNotNull(restaurant1);
             Assert.AreEqual(restaurant1, restaurant2);
         }
+
+        [TestMethod]
+
+        public void CuisineSingleton()
+        {
+            Cuisine cuisine1 = Cuisine.Instance;
+            Cuisine cuisine2 = Cuisine.Instance;
+            Assert.IsNotNull(cuisine1);
+            Assert.AreEqual(cuisine1, cuisine2);
+        }
     }
 }
