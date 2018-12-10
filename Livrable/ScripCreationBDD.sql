@@ -85,6 +85,7 @@ CREATE TABLE EtapeRecette(
 	CONSTRAINT EtapeRecette_PK PRIMARY KEY (ID)
 );
 
-
-
-
+INSERT INTO EtapeRecette (NomRecette, NbEtape, Description, Action, Temps) 
+VALUES ('Endive aux Noix', 1, 'Découpez les endives en tranche', 'Decoupe', 10),
+ ('Endive aux Noix', 2, 'Cassez les noix en morceaux', 'Decoupe', 20), 
+ ('Endive aux Noix', 3, 'Melangez les endives et les noix', 'Melange', 25);

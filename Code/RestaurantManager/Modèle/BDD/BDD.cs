@@ -170,5 +170,36 @@ namespace RestaurantManager.Modèle.BDD
                 connexion.Close();
             }
         }
+
+
+        public void getEtape(string Recette)
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.EtapeRecette WHERE NomRecette = @Recette", connexion);
+                command.Parameters.AddWithValue("@Recette", Recette);
+
+
+                try
+                {
+                    connexion.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        //Recupération des valeurs a ensuite stocker dans des variables
+                        //0 = ID | 1 = Nom etc...
+                        Console.Write(reader[1]);
+                        Console.WriteLine(reader[2]);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
     }
 }

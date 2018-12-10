@@ -26,5 +26,7 @@ namespace RestaurantManager.Modèle.BDD
             Bdd.updateStock(recette, quantite);
         }
 
+
+
     }
 }
