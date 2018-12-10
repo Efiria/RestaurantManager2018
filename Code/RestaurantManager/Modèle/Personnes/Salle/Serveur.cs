@@ -10,7 +10,10 @@ namespace RestaurantManager.Modèle.Personnes.Salle
     {
         public Serveur()
         {
-                
+            Console.WriteLine("Le serveur apporte le pain et l'eau au client")
+            Console.WriteLine("Le serveur apportes les commandes")
+            Console.WriteLine("Le serveur débrasse les assiettes")
+
         }
     }
 }
