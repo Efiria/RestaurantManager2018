@@ -26,7 +26,15 @@ namespace RestaurantManager.Modèle.BDD
             Bdd.updateStock(recette, quantite);
         }
 
+        public void getRecette()
+        {
+            Bdd.getRecette();
+        }
 
+        public void reStock(string Recette)
+        {
+            Bdd.reStock(Recette);
+        }
 
     }
 }
