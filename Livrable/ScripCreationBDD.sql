@@ -75,5 +75,16 @@ CREATE TABLE ComptaCommande(
 );
 
 
+CREATE TABLE EtapeRecette(
+	ID 				INT IDENTITY (1,1) NOT NULL ,
+	NomRecette      VARCHAR(50) NOT NULL ,
+	NbEtape			INT NOT NULL ,
+	Description   	VARCHAR(250) NOT NULL ,
+	Action			VARCHAR(50) NOT NULL ,
+	Temps				INT NOT NULL , 
+	CONSTRAINT EtapeRecette_PK PRIMARY KEY (ID)
+);
+
+
 
 
