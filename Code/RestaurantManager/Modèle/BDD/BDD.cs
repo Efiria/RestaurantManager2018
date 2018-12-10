@@ -135,5 +135,40 @@ namespace RestaurantManager.Modèle.BDD
                 connexion.Close();
             }
         }
+
+        /// <summary>
+        /// Commande des ingredients pour avoir 50 ingredients dans le stock
+        /// </summary>
+        public void reStock()
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                Dictionary<string, int> valeur = new Dictionary<string, int>();
+                int valeurStock = 40;
+
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.StockIngredients WHERE Stock < @valeur", connexion);
+                command.Parameters.AddWithValue("@valeur", valeurStock);
+
+
+                connexion.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    valeur.Add(reader[1].ToString(), (int)reader[2]);
+                }
+                reader.Close();
+
+                foreach (var item in valeur)
+                {
+                    SqlCommand commandUpdate = new SqlCommand("UPDATE StockIngredients SET Stock = Stock + @vStock WHERE Nom = @NomIngredient", connexion);
+                    commandUpdate.Parameters.AddWithValue("@vStock", valeurStock - item.Value);
+                    commandUpdate.Parameters.AddWithValue("@NomIngredient", item.Key);
+                    commandUpdate.ExecuteNonQuery();
+                }
+                connexion.Close();
+            }
+        }
     }
 }

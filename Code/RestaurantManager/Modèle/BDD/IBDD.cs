@@ -12,5 +12,6 @@ namespace RestaurantManager.Modèle.BDD
         void getReservation();
         void setReservation(string Nom, int nbPersonne, int heure);
         void updateStock(string recette, int quantite = 1);
+        void reStock();
     }
 }
