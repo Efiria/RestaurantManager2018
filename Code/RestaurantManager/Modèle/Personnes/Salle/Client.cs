@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManager.Modèle.Personnes.Cuisine
+namespace RestaurantManager.Modèle.Personnes
 {
-    class ChefDeCuisine : AEmploye
+    public class Client : AClient
     {
-        public ChefDeCuisine()
-        {
 
+        public Client()
+        {
+            
         }
     }
 }

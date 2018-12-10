@@ -52,6 +52,7 @@
     <Compile Include="TestBDD.cs" />
     <Compile Include="TestLieux.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPersonnesFabrique.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
