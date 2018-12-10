@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Lieux
 {
-    class Cuisine
+    public class Cuisine
     {
     }
 }
