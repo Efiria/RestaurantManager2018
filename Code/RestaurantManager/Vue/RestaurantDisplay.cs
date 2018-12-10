@@ -15,6 +15,7 @@ namespace RestaurantManager.Vue
     public partial class RestaurantDisplay : Form
     {
         private int SPRITE_SIZE = Int32.Parse(SettingsReader.ReadSettings("SpriteSize"));
+        private Restaurant restaurant;
 
         public RestaurantDisplay()
         {
@@ -23,56 +24,38 @@ namespace RestaurantManager.Vue
 
         private void Btn_Start_Click(object sender, EventArgs e)
         {
-            this.panel1.Controls.Clear();
-            PictureBox pictureBox = new PictureBox
-            {
-                Image = Properties.Resources.MaitreDHotel,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-            };
-            pictureBox.Height = pictureBox.Width = SPRITE_SIZE;
-            
-            this.panel1.Controls.Add(pictureBox);
-
-            Object[,] args = new Object[10, 10];
-
-            args[1, 3] = new Table(2);
-            args[1, 5] = new Table(6);
-            args[5, 3] = new Table(10);
-            Display(args);
+            this.ConsoleLog("====================" + Environment.NewLine + "Début de la simulation" + Environment.NewLine + "====================" + Environment.NewLine);
+            restaurant = Restaurant.Instance(this);
         }
 
-        public void Display(Object[,] map)
+        public void Display(Restaurant restaurant)
         {
-            for (int i = 0; i < 10; i++)
+            foreach (Table[][] carres in restaurant.Salle.Tables)
             {
-                for (int j = 0; j < 10; j++)
+                foreach (Table[] rangs in carres)
                 {
-                    if (map[i,j] != null)
+                    foreach (Table table in rangs)
                     {
-                        if (map[i, j] is Table)
-                        {
-                            DisplayTable(map[i, j] as Table, i, j);
-                        }
-                        //else if (map[i, j] is Personne)
-                        //{
-                        //    DisplayPerson(map[i, j] as Personne, i, j);
-                        //}
+                        DisplayTable(table);
                     }
                 }
             }
         }
 
-        private void DisplayTable(Table table, int x, int y)
+        private void DisplayTable(Table table)
         {
+            int x = table.PosX;
+            int y = table.PosY;
+
             Bitmap flippedChair = new Bitmap(Properties.Resources.Chaise);
             flippedChair.RotateFlip(RotateFlipType.RotateNoneFlipX);
 
             for (int i = 0; i < (table.Size / 2); i++)
             {
-                CreatePictureBox(Properties.Resources.Chaise, x - 1, y + i);
-                CreatePictureBox(Properties.Resources.Table, x, y + i);
+                CreatePictureBox(Properties.Resources.Chaise, x - 1, y + i, null);
+                CreatePictureBox(Properties.Resources.Table, x, y + i, table.ToString());
                 Properties.Resources.Chaise.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                CreatePictureBox(flippedChair, x + 1, y + i);
+                CreatePictureBox(flippedChair, x + 1, y + i, null);
             }
         }
 
@@ -81,15 +64,20 @@ namespace RestaurantManager.Vue
             
         //}
 
-        private void CreatePictureBox(Bitmap bitmap, int x, int y)
+        private void CreatePictureBox(Bitmap bitmap, int x, int y, string onClickMsg)
         {
             PictureBox pictureBox = new PictureBox
             {
                 Image = bitmap,
                 Location = new Point(x * SPRITE_SIZE, y * SPRITE_SIZE),
-                SizeMode = PictureBoxSizeMode.StretchImage
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Height = SPRITE_SIZE,
+                Width = SPRITE_SIZE
             };
-            pictureBox.Height = pictureBox.Width = SPRITE_SIZE;
+
+            if (onClickMsg != null)
+                pictureBox.Click += (Object s, EventArgs eventArgs) => InspectionLog(onClickMsg);
+
             this.panel1.Controls.Add(pictureBox);
         }
 
@@ -98,6 +86,16 @@ namespace RestaurantManager.Vue
             Form formConfig = ConfigDisplay.Instance();
             formConfig.Show();
             formConfig.FormClosed += (Object s, FormClosedEventArgs f) => SPRITE_SIZE = Int32.Parse(SettingsReader.ReadSettings("SpriteSize"));
+        }
+
+        private void InspectionLog (string msg)
+        {
+            this.txtBox_Inspection.Text = "INSPECTION :\n" + msg + "\n";
+        }
+
+        private void ConsoleLog (string msg)
+        {
+            this.txtBox_Console.AppendText(msg);
         }
     }
 }
