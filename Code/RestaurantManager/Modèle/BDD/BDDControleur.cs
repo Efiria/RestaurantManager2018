@@ -36,5 +36,9 @@ namespace RestaurantManager.Modèle.BDD
             Bdd.reStock(Recette);
         }
 
+        public void getEtape(string Recette)
+        {
+            Bdd.getEtape(Recette);
+        }
     }
 }
