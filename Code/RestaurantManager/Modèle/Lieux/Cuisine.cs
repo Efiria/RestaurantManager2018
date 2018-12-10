@@ -6,7 +6,33 @@ using System.Threading.Tasks;
 
 namespace RestaurantManager.Modèle.Lieux
 {
-    class Cuisine
+
+    public class Cuisine
     {
+        private static Cuisine _instance;
+        static readonly object instanceLock = new object();
+
+        private Cuisine()
+        {
+
+        }
+
+        public static Cuisine Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (instanceLock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new Cuisine();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
     }
 }
