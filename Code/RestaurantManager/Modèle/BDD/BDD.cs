@@ -11,14 +11,15 @@ namespace RestaurantManager.Modèle.BDD
         /// <summary>
         /// Get Recette de la base de données
         /// </summary>
-        public List<string> getRecette()
+        public List<string> getRecette(string categorie)
         {
             string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
             List<string> recettes = new List<string>();
 
             using (SqlConnection connexion = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM dbo.Recette", connexion);
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.Recette WHERE Categorie = @Cate", connexion);
+                command.Parameters.AddWithValue("@Cate", categorie);
 
                 try
                 {
