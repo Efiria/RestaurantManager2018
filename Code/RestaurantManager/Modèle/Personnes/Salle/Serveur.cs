@@ -8,12 +8,19 @@ namespace RestaurantManager.Modèle.Personnes.Salle
 {
     class Serveur : AEmploye
     {
-        public Serveur()
+        public void PainEau()
         {
-            Console.WriteLine("Le serveur apporte le pain et l'eau au client")
-            Console.WriteLine("Le serveur apportes les commandes")
-            Console.WriteLine("Le serveur débrasse les assiettes")
+            Console.WriteLine("Le serveur apporte le pain et l'eau au client");
+        }
 
+        public void LivraisonCommandes()
+        {
+            Console.WriteLine("Le serveur apportes les commandes");
+        }
+
+        public void EnleverAssiettes()
+        {
+            Console.WriteLine("Le serveur débrasse les assiettes");
         }
     }
 }
