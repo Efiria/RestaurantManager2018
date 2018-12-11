@@ -181,7 +181,7 @@ namespace RestaurantManager.Modèle.BDD
 
             using (SqlConnection connexion = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM dbo.EtapeRecette WHERE NomRecette = @Recette", connexion);
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.EtapeRecette WHERE NomRecette = @Recette ORDER BY NbEtape DESC", connexion);
                 command.Parameters.AddWithValue("@Recette", Recette);
 
 
@@ -194,7 +194,8 @@ namespace RestaurantManager.Modèle.BDD
                         //Recupération des valeurs a ensuite stocker dans des variables
                         //0 = ID | 1 = Nom etc...
                         Console.Write(reader[1]);
-                        Console.WriteLine(reader[2]);
+                        Console.Write(reader[3]);
+                        Console.WriteLine(reader[4]);
                     }
                     reader.Close();
                 }
