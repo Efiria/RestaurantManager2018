@@ -13,7 +13,7 @@ CREATE TABLE Recette(
 	Prix   INT  NOT NULL  ,
 	CONSTRAINT Recette_PK PRIMARY KEY (ID)
 );
-INSERT INTO Recette (Nom, Prix) VALUES ('Endive aux Noix','Entree' ,6), ('Compote de Pomme','Dessert' ,6), ('Burger Vegan','Plat',26), ('Steack Frite', 'Plat', 21), ('Fondant Chocolat','Dessert',5), ('Planche de Charcuterie', 'Entree', 8);
+INSERT INTO Recette (Nom,Categorie, Prix) VALUES ('Endive aux Noix','Entree' ,6), ('Compote de Pomme','Dessert' ,6), ('Burger Vegan','Plat',26), ('Steack Frite', 'Plat', 21), ('Fondant Chocolat','Dessert',5), ('Planche de Charcuterie', 'Entree', 8);
 
 /*------------------------------------------------------------
 -- Table: StockIngredients
