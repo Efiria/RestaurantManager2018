@@ -15,8 +15,9 @@ namespace RestaurantManager
         [STAThread]
         static void Main()
         {
-            /*BDDControleur controleur = new BDDControleur();
-            controleur.setCompta("Burger Vegan");
+            BDDControleur controleur = new BDDControleur();
+            //controleur.setCompta("Steack Frite");
+            int prix = controleur.getMoney();
             //controleur.clearCompta();*/
 
             Application.EnableVisualStyles();

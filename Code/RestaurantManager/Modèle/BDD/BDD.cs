@@ -240,6 +240,8 @@ namespace RestaurantManager.Modèle.BDD
                         Console.WriteLine(reader[4]);
                     }
                     reader.Close();
+
+                    connexion.Close();
                 }
                 catch (Exception e)
                 {
@@ -297,18 +299,31 @@ namespace RestaurantManager.Modèle.BDD
 
                 try
                 {
+                    Dictionary<string, int> valeur = new Dictionary<string, int>();
+
                     connexion.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        Console.Write(reader[1]);
-
-                        Money = Money + (int)reader[0];
-
-                        Console.Write(reader[3]);
-                        Console.WriteLine(reader[4]);
+                        valeur.Add(reader[1].ToString(),(int)reader[2]);
                     }
                     reader.Close();
+
+                    foreach (var item in valeur)
+                    {
+                        SqlCommand commandUpdate = new SqlCommand("SELECT Prix FROM dbo.Recette WHERE Nom = @NomRecette", connexion);
+                        commandUpdate.Parameters.AddWithValue("@NomRecette", item.Key);
+
+                        SqlDataReader readerPrix = commandUpdate.ExecuteReader();
+                        if (readerPrix.Read())
+                        {
+                            Money = Money + (int)readerPrix[0] * item.Value;
+
+                            readerPrix.Close();
+                        }
+                    }
+                    connexion.Close();
+
                 }
                 catch (Exception e)
                 {
@@ -316,7 +331,7 @@ namespace RestaurantManager.Modèle.BDD
                 }
 
             }
-
+            Console.WriteLine(Money);
             return Money;
         }
 
