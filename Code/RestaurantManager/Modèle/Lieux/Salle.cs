@@ -49,7 +49,7 @@ namespace RestaurantManager.Modèle.Lieux
                     Tables[i][j] = new Table[nbrTableParRang];
                     for (int k = 0; k < nbrTableParRang; k++)
                     {
-                        Tables[i][j][k] = new Table((i * 9) + ((k + 1) * 4), j * 5, TABLE_SIZE);
+                        Tables[i][j][k] = new Table((i * 9) + ((k + 1) * 4), j * 5, TABLE_SIZE, this);
                     }
                 }
             }

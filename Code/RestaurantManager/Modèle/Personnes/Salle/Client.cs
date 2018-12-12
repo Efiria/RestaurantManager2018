@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantManager.Modèle.BDD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,21 @@ namespace RestaurantManager.Modèle.Personnes
             string nL = Environment.NewLine;
             return "Caractère : " + Caractere + nL + "Gout : " + Gout + nL + "Reservation : " + Reservation + nL;
         }
+
+
+        public List<string> SelectChoix(string categorie)
+        {
+            Random rnd = new Random();
+            BDDControleur bdd = new BDDControleur();
+            List<string> returnList = new List<string>();
+            
+                var list = bdd.getRecette(categorie);
+                int index = rnd.Next(list.Count);
+                string choix = list[index];
+                returnList.Add(choix);
+
+            return returnList;
+        }
+
     }
 }
