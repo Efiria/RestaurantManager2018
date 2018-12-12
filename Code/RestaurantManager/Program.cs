@@ -15,16 +15,9 @@ namespace RestaurantManager
         [STAThread]
         static void Main()
         {
-
-            //BDD BDD = new BDD();
-            //BDD.updateStock("Endive aux Noix");
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Vue.RestaurantDisplay());
-
-            /*IBDD setReservation = new BDD();
-            setReservation.updateStock("Endive aux Noix");*/
 
         }
     }
