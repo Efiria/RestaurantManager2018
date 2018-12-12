@@ -10,7 +10,7 @@ namespace RestaurantManager.Modèle.BDD
     class BDDControleur
     {
         IBDD Bdd = new BDD();
-        
+
         public void getReservation()
         {
             Bdd.getReservation();
@@ -26,9 +26,9 @@ namespace RestaurantManager.Modèle.BDD
             Bdd.updateStock(recette, quantite);
         }
 
-        public List<string> getRecette()
+        public List<string> getRecette(string categorie)
         {
-            return Bdd.getRecette();
+            return Bdd.getRecette(categorie);
         }
 
         public void reStock()
@@ -36,9 +36,14 @@ namespace RestaurantManager.Modèle.BDD
             Bdd.reStock();
         }
 
-        public void getEtape(string Recette)
+        public List<string> getEtape(string recette)
         {
-            Bdd.getEtape(Recette);
+            return Bdd.getEtape(recette);
+        }
+
+        public int getPrix(string recette)
+        {
+            return Bdd.getPrice(recette);
         }
     }
 }

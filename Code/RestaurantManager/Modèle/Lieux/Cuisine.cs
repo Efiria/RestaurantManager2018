@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantManager.Modèle.Personnes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace RestaurantManager.Modèle.Lieux
     {
         private static Cuisine _instance;
         static readonly object instanceLock = new object();
+
+        public List<AEmploye> Employes { get; private set; } = new List<AEmploye>();
 
         private Cuisine()
         {

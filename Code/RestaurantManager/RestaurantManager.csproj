@@ -136,5 +136,26 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Client.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChefDeCuisine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CommisDeCuisine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CommisDeSalle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuisinier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plongeur.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
