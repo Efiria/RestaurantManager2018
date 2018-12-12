@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Common;
 using RestaurantManager.Vue;
@@ -14,22 +15,44 @@ namespace RestaurantManager.Modèle.Lieux
         static readonly object instanceLock = new object();
 
         public delegate void DisplayEventHandler(Restaurant restaurantSrc);
-        public static event DisplayEventHandler Observable;
+        public static event DisplayEventHandler ObservableDisplay;
+        public delegate void ConsoleEventHandler(string msg);
+        public static event ConsoleEventHandler ObservableConsole;
 
         public Salle Salle { get; private set; }
         public Cuisine Cuisine { get; private set; }
 
         private Restaurant(RestaurantDisplay restaurantDisplay)
         {
-            Observable += new DisplayEventHandler(restaurantDisplay.Display);
-            Salle = new Salle(
-                int.Parse(SettingsReader.ReadSettings("nbrCarreParSalle")),
-                int.Parse(SettingsReader.ReadSettings("nbrRangParCarre"))
-                );
+            ObservableDisplay += new DisplayEventHandler(restaurantDisplay.Display);
+            ObservableConsole += new ConsoleEventHandler(restaurantDisplay.ConsoleLog);
             
-            if (Observable != null)
+            Salle = new Salle(
+                this, 
+                int.Parse(SettingsReader.ReadSettings("nbrCarreParSalle")),
+                int.Parse(SettingsReader.ReadSettings("nbrRangParCarre")),
+                int.Parse(SettingsReader.ReadSettings("nbrTableParRang"))
+                );
+        }
+
+        public void Pause ()
+        {
+            Salle.Pause();
+        }
+
+        public void CallDisplay()
+        {
+            if (ObservableDisplay != null)
             {
-                Observable(this);
+                ObservableDisplay(this);
+            }
+        }
+
+        public void CallConsole(string msg)
+        {
+            if (ObservableConsole != null)
+            {
+                ObservableConsole(msg);
             }
         }
 

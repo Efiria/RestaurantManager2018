@@ -8,6 +8,8 @@ namespace RestaurantManager.Modèle.Personnes
 {
     public abstract class Personne
     {
-
+        public string Nom { get; set; }
+        public int PosX { get; set; } = 0;
+        public int PosY { get; set; } = 0;
     }
 }

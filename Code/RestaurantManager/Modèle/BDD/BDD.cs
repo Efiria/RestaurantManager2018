@@ -11,13 +11,15 @@ namespace RestaurantManager.Modèle.BDD
         /// <summary>
         /// Get Recette de la base de données
         /// </summary>
-        public void getRecette()
+        public List<string> getRecette(string categorie)
         {
             string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+            List<string> recettes = new List<string>();
 
             using (SqlConnection connexion = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM dbo.Recette", connexion);
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.Recette WHERE Categorie = @Cate", connexion);
+                command.Parameters.AddWithValue("@Cate", categorie);
 
                 try
                 {
@@ -27,8 +29,8 @@ namespace RestaurantManager.Modèle.BDD
                     {
                         //Recupération des valeurs a ensuite stocker dans des variables
                         //0 = ID | 1 = Nom etc...
-                        Console.Write(reader[1]);
-                        Console.WriteLine(reader[2]);
+                        recettes.Add((string)reader[1]);
+                        //Console.WriteLine(reader[2]);
                     }
                     reader.Close();
                 }
@@ -37,6 +39,7 @@ namespace RestaurantManager.Modèle.BDD
                     Console.WriteLine(e.Message);
                 }
             }
+            return recettes;
         }
 
         /// <summary>
@@ -168,6 +171,38 @@ namespace RestaurantManager.Modèle.BDD
                     commandUpdate.ExecuteNonQuery();
                 }
                 connexion.Close();
+            }
+        }
+
+
+        public void getEtape(string Recette)
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.EtapeRecette WHERE NomRecette = @Recette ORDER BY NbEtape DESC", connexion);
+                command.Parameters.AddWithValue("@Recette", Recette);
+
+
+                try
+                {
+                    connexion.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        //Recupération des valeurs a ensuite stocker dans des variables
+                        //0 = ID | 1 = Nom etc...
+                        Console.Write(reader[1]);
+                        Console.Write(reader[3]);
+                        Console.WriteLine(reader[4]);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
     }

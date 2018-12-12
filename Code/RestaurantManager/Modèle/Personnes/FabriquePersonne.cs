@@ -60,14 +60,21 @@ namespace RestaurantManager.Modèle.Personnes
             return employe;
         }
 
-        public AClient CreateClient (Caractere caractere)
+        public Client CreateClient (Caractere caractere)
         {
-            AClient client = null;
+            Client client;
             switch (caractere)
             {
                 case Caractere.Lent:
                     client = new Client();
                     client.Caractere = caractere;
+                    break;
+                case Caractere.Presse:
+                    client = new Client();
+                    client.Caractere = caractere;
+                    break;
+                default:
+                    client = null;
                     break;
             }
             return client;
