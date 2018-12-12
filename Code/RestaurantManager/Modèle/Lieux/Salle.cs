@@ -94,7 +94,6 @@ namespace RestaurantManager.Modèle.Lieux
                     Client client = fabriquePersonne.CreateClient(Caractere.Presse);
                     client.Id = this.Clients.Count;
                     this.Clients.Add(client);
-
                     clients.Add(client);
                 }
                 this.Restaurant.CallConsole(nbrOfClients + " clients sont entrés sur " + CapaciteMax + " (" + this.Clients.Count + "/" + CapaciteMax + ")");

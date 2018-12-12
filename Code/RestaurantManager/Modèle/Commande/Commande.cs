@@ -32,9 +32,9 @@ namespace RestaurantManager.Modèle.CommandePackage
         public List<string> AddEntree(List<string> recette)
         {
             foreach (string el in recette)
-            {
-                this.Salle.Restaurant.CallConsole
+            {                
                 Console.WriteLine("Le Client" + IdClient + " a commande un ou une" + el);
+                this.Salle.Restaurant.CallConsole("La Table" + Salle.Tables+ "a Commander : " +el);
                 Entree.Add(el);
             }
             return Entree;
