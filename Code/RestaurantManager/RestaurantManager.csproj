@@ -50,6 +50,7 @@
     <Compile Include="Modèle\BDD\BDD.cs" />
     <Compile Include="Modèle\BDD\BDDControleur.cs" />
     <Compile Include="Modèle\BDD\IBDD.cs" />
+    <Compile Include="Modèle\Commande\Commande.cs" />
     <Compile Include="Modèle\Lieux\Table.cs" />
     <Compile Include="Modèle\Lieux\Cuisine.cs" />
     <Compile Include="Modèle\Lieux\Restaurant.cs" />

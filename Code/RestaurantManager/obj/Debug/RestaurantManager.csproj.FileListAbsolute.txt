@@ -30,3 +30,17 @@ C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\bin
 C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Vue.ConfigDisplay.resources
 C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Vue.RestaurantDisplay.resources
 C:\Users\olivi\Documents\GitHub\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.CopyComplete
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.exe.config
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.exe
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\bin\Debug\RestaurantManager.pdb
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\bin\Debug\Common.dll
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\bin\Debug\Common.pdb
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csprojAssemblyReference.cache
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Properties.Resources.resources
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Vue.ConfigDisplay.resources
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.Vue.RestaurantDisplay.resources
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.GenerateResource.cache
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.CoreCompileInputs.cache
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.csproj.CopyComplete
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.exe
+D:\Cours\A3\Projet Prog Système\RestaurantManager2018\RestaurantManager2018\Code\RestaurantManager\obj\Debug\RestaurantManager.pdb
