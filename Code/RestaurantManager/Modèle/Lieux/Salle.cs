@@ -1,4 +1,5 @@
-﻿using RestaurantManager.Modèle.Personnes;
+﻿using Common;
+using RestaurantManager.Modèle.Personnes;
 using RestaurantManager.Modèle.Personnes.Salle;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,11 @@ namespace RestaurantManager.Modèle.Lieux
         public List<Client> Clients { get; private set; } = new List<Client>();
         public List<AEmploye> Employes { get; private set; } = new List<AEmploye>();
 
-        private MaitreDHotel MaitreDHotel { get; set; }
-
+        public MaitreDHotel MaitreDHotel { get; set; }
+        public ChefDeRang ChefDeRang { get; set; }
+        public Serveur Serveur { get; set; }
+        public CommisDeSalle CommisDeSalle { get; set; }
+        
         private static System.Timers.Timer aTimer;
         private readonly Random random = new Random();
 
@@ -57,10 +61,11 @@ namespace RestaurantManager.Modèle.Lieux
 
             fabriquePersonne = new FabriquePersonne();
 
+            this.CreateEmployes();
+
             MaitreDHotel = fabriquePersonne.CreateEmploye(Roles.MaitreDHotel) as MaitreDHotel;
             Employes.Add(MaitreDHotel);
-
-
+            
             SetTimer();
         }
 
@@ -100,6 +105,39 @@ namespace RestaurantManager.Modèle.Lieux
                 this.Restaurant.CallConsole(nbrOfClients + " clients sont entrés sur " + CapaciteMax + " (" + this.Clients.Count + "/" + CapaciteMax + ")");
                 MaitreDHotel.AssignToTable(this, clients);
                 this.Restaurant.CallDisplay();
+            }
+        }
+
+        private void CreateEmployes ()
+        {
+            Roles[] EmploiNom = { Roles.MaitreDHotel, Roles.ChefDeRang, Roles.Serveur, Roles.CommisDeSalle };
+            Thread[] Emploi = new Thread[EmploiNom.Length];
+            
+            for (int i = 0; i < EmploiNom.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        MaitreDHotel = fabriquePersonne.CreateEmploye(EmploiNom[i]) as MaitreDHotel;
+                        Thread MaitreDHotelThread = new Thread(new ThreadStart(MaitreDHotel.Start));
+                        MaitreDHotelThread.Name = EmploiNom[i].ToString();
+                        break;
+                    case 1:
+                        ChefDeRang = fabriquePersonne.CreateEmploye(EmploiNom[i]) as ChefDeRang;
+                        Thread ChefDeRangThread = new Thread(new ThreadStart(ChefDeRang.Start));
+                        ChefDeRangThread.Name = EmploiNom[i].ToString();
+                        break;
+                    case 2:
+                        Serveur = fabriquePersonne.CreateEmploye(EmploiNom[i]) as Serveur;
+                        Thread ServeurThread = new Thread(new ThreadStart(Serveur.Start));
+                        ServeurThread.Name = EmploiNom[i].ToString();
+                        break;
+                    case 3:
+                        CommisDeSalle = fabriquePersonne.CreateEmploye(EmploiNom[i]) as CommisDeSalle;
+                        Thread CommisDeSalleThread = new Thread(new ThreadStart(CommisDeSalle.Start));
+                        CommisDeSalleThread.Name = EmploiNom[i].ToString();
+                        break;
+                }
             }
         }
 

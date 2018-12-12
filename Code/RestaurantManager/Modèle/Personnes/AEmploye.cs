@@ -9,5 +9,10 @@ namespace RestaurantManager.Modèle.Personnes
     public abstract class AEmploye : Personne
     {
         public Roles Role { get; set; }
+
+        public void Start()
+        {
+
+        }
     }
 }
