@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using RestaurantManager.Modèle.Personnes;
+using RestaurantManager.Modèle.Personnes.Salle;
+using RestaurantManager.Modèle.Personnes.Cuisine;
 
 namespace RestaurantManager.Vue
 {
@@ -63,6 +65,16 @@ namespace RestaurantManager.Vue
             {
                 DisplayPersonne(client);
             }
+
+            foreach (AEmploye employe in restaurant.Salle.Employes)
+            {
+                DisplayPersonne(employe);
+            }
+
+            foreach (AEmploye employe in restaurant.Cuisine.Employes)
+            {
+                DisplayPersonne(employe);
+            }
         }
 
         /// <summary>
@@ -95,10 +107,56 @@ namespace RestaurantManager.Vue
             int x = personne.PosX;
             int y = personne.PosY;
 
+            Bitmap bitmapToUse = null;
+            string type = null;
+
             if (personne is Client)
             {
-                CreatePictureBox(Properties.Resources.Client, x, y, personne.ToString(), "client");
+                bitmapToUse = Properties.Resources.Client;
+                type = "client";
             }
+            else if (personne is MaitreDHotel)
+            {
+                bitmapToUse = Properties.Resources.MaitreDHotel;
+                type = "employe";
+            }
+            else if (personne is ChefDeRang)
+            {
+                bitmapToUse = Properties.Resources.ChefDeRang;
+                type = "employe";
+            }
+            else if (personne is Serveur)
+            {
+                bitmapToUse = Properties.Resources.Serveur;
+                type = "employe";
+            }
+            else if (personne is CommisDeSalle)
+            {
+                bitmapToUse = Properties.Resources.CommisDeSalle;
+                type = "employe";
+            }
+            else if (personne is ChefDeCuisine)
+            {
+                bitmapToUse = Properties.Resources.ChefDeCuisine;
+                type = "employe";
+            }
+            else if (personne is Cuisinier)
+            {
+                bitmapToUse = Properties.Resources.Cuisinier;
+                type = "employe";
+            }
+            else if (personne is Plongeur)
+            {
+                bitmapToUse = Properties.Resources.Plongeur;
+                type = "employe";
+            }
+            else if (personne is CommisDeCuisine)
+            {
+                bitmapToUse = Properties.Resources.CommisDeCuisine;
+                type = "employe";
+            }
+
+            CreatePictureBox(bitmapToUse, x, y, personne.ToString(), type);
         }
 
         /// <summary>

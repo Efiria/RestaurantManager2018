@@ -33,6 +33,8 @@ namespace RestaurantManager.Modèle.Lieux
                 int.Parse(SettingsReader.ReadSettings("nbrRangParCarre")),
                 int.Parse(SettingsReader.ReadSettings("nbrTableParRang"))
                 );
+
+            Cuisine = Cuisine.Instance;
         }
 
         public void Pause ()

@@ -121,14 +121,29 @@
   <data name="Chaise" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chaise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ChefDeCuisine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChefDeCuisine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ChefDeRang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChefDeRang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Client" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Client.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CommisDeCuisine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CommisDeCuisine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CommisDeSalle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CommisDeSalle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cuisinier" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cuisinier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MaitreDHotel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MaitreDHotel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Plongeur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plongeur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Serveur" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Serveur.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
