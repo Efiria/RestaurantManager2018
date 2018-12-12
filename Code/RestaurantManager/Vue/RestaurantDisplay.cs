@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using RestaurantManager.Modèle.Personnes;
 
 namespace RestaurantManager.Vue
 {
@@ -17,31 +18,57 @@ namespace RestaurantManager.Vue
         private int SPRITE_SIZE = Int32.Parse(SettingsReader.ReadSettings("SpriteSize"));
         private Restaurant restaurant;
 
+        private object[,] Map { get; } = new object[22, 9];
+        
+        private bool TableDisplayed { get; set; }
+
         public RestaurantDisplay()
         {
             InitializeComponent();
         }
 
-        private void Btn_Start_Click(object sender, EventArgs e)
-        {
-            this.ConsoleLog("====================" + Environment.NewLine + "Début de la simulation" + Environment.NewLine + "====================" + Environment.NewLine);
-            restaurant = Restaurant.Instance(this);
-        }
-
+        /// <summary>
+        /// Fonction permettant d'afficher les différents éléments composants un restaurant
+        /// </summary>
+        /// <param name="restaurant">Le restaurant source que l'on souhaite afficher</param>
         public void Display(Restaurant restaurant)
         {
-            foreach (Table[][] carres in restaurant.Salle.Tables)
+            if (panel1.InvokeRequired)
             {
-                foreach (Table[] rangs in carres)
+                panel1.Invoke(new MethodInvoker(delegate ()
                 {
-                    foreach (Table table in rangs)
+                    this.panel1.Controls.Clear();
+                }));
+            }
+            else
+            {
+                this.panel1.Controls.Clear();
+            }
+
+            if (!TableDisplayed) {
+                foreach (Table[][] carres in restaurant.Salle.Tables)
+                {
+                    foreach (Table[] rangs in carres)
                     {
-                        DisplayTable(table);
+                        foreach (Table table in rangs)
+                        {
+                            DisplayTable(table);
+                        }
                     }
                 }
+                TableDisplayed = true;
+            }
+            
+            foreach (Client client in restaurant.Salle.Clients)
+            {
+                DisplayPersonne(client);
             }
         }
 
+        /// <summary>
+        /// Affiche une table donnée sur le WinForm
+        /// </summary>
+        /// <param name="table">La table à afficher</param>
         private void DisplayTable(Table table)
         {
             int x = table.PosX;
@@ -52,19 +79,36 @@ namespace RestaurantManager.Vue
 
             for (int i = 0; i < (table.Size / 2); i++)
             {
-                CreatePictureBox(Properties.Resources.Chaise, x - 1, y + i, null);
-                CreatePictureBox(Properties.Resources.Table, x, y + i, table.ToString());
-                Properties.Resources.Chaise.RotateFlip(RotateFlipType.RotateNoneFlipX);
-                CreatePictureBox(flippedChair, x + 1, y + i, null);
+                //CreatePictureBox(Properties.Resources.Chaise, x - 1, y + i, null);
+                CreatePictureBox(Properties.Resources.Table, x, y + i, table.ToString(), "table");
+                //Properties.Resources.Chaise.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                //CreatePictureBox(flippedChair, x + 1, y + i, null);
             }
         }
 
-        //private void DisplayPerson(Personne personne, int x, int y)
-        //{
-            
-        //}
+        /// <summary>
+        /// Affiche une personne donnée sur le WinForm
+        /// </summary>
+        /// <param name="personne">La personne à afficher</param>
+        private void DisplayPersonne(Personne personne)
+        {
+            int x = personne.PosX;
+            int y = personne.PosY;
 
-        private void CreatePictureBox(Bitmap bitmap, int x, int y, string onClickMsg)
+            if (personne is Client)
+            {
+                CreatePictureBox(Properties.Resources.Client, x, y, personne.ToString(), "client");
+            }
+        }
+
+        /// <summary>
+        /// Crée une PictureBox et l'ajoute au WinForm
+        /// </summary>
+        /// <param name="bitmap">L'image à afficher</param>
+        /// <param name="x">La position X de la PictureBox</param>
+        /// <param name="y">La position Y de la PictureBox</param>
+        /// <param name="onClickMsg">Le message à afficher dans la fenêtre d'inspection lors du clic sur une image</param>
+        private void CreatePictureBox(Bitmap bitmap, int x, int y, string onClickMsg, string type)
         {
             PictureBox pictureBox = new PictureBox
             {
@@ -77,25 +121,80 @@ namespace RestaurantManager.Vue
 
             if (onClickMsg != null)
                 pictureBox.Click += (Object s, EventArgs eventArgs) => InspectionLog(onClickMsg);
-
-            this.panel1.Controls.Add(pictureBox);
+            
+            if (panel1.InvokeRequired)
+            {
+                panel1.Invoke(new MethodInvoker(delegate ()
+                {
+                    if (type == "table")
+                    {
+                        this.Controls.Add(pictureBox);
+                        pictureBox.BringToFront();
+                    }
+                    else
+                    {
+                        panel1.Controls.Add(pictureBox);
+                    }
+                }));
+            }
+            else
+            {
+                panel1.Controls.Add(pictureBox);
+            }
         }
 
         private void btn_Config_Click(object sender, EventArgs e)
         {
             Form formConfig = ConfigDisplay.Instance();
             formConfig.Show();
-            formConfig.FormClosed += (Object s, FormClosedEventArgs f) => SPRITE_SIZE = Int32.Parse(SettingsReader.ReadSettings("SpriteSize"));
+            formConfig.FormClosed += (Object s, FormClosedEventArgs f) =>
+            {
+                SPRITE_SIZE = Int32.Parse(SettingsReader.ReadSettings("SpriteSize"));
+                TableDisplayed = false;
+            };
+        }
+
+        private void Btn_Start_Click(object sender, EventArgs e)
+        {
+            this.ConsoleLog("====================" + Environment.NewLine + "Début de la simulation" + Environment.NewLine + "====================" + Environment.NewLine);
+            this.btn_Start.Enabled = false;
+            restaurant = Restaurant.Instance(this);
+        }
+
+        private void btn_Pause_Click(object sender, EventArgs e)
+        {
+            restaurant.Pause();
         }
 
         private void InspectionLog (string msg)
         {
-            this.txtBox_Inspection.Text = "INSPECTION :\n" + msg + "\n";
+            this.txtBox_Inspection.Text = "INSPECTION :" + Environment.NewLine + msg + Environment.NewLine;
         }
 
-        private void ConsoleLog (string msg)
+        public void ConsoleLog (string msg)
         {
-            this.txtBox_Console.AppendText(msg);
+            if (txtBox_Console.InvokeRequired)
+            {
+                txtBox_Console.Invoke(new MethodInvoker(
+                    delegate ()
+                    {
+                        txtBox_Console.AppendText(msg + Environment.NewLine);
+                    }));
+            }
+            else
+            {
+                txtBox_Console.AppendText(msg + Environment.NewLine);
+            }
+        }
+
+        public void InsertInMap(object obj, int x, int y)
+        {
+            Map[x, y] = obj;
+        }
+
+        public object GetFromMap(int x, int y)
+        {
+            return Map[x, y];
         }
     }
 }
