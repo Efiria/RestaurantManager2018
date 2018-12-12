@@ -165,8 +165,9 @@ namespace RestaurantManager.Modèle.BDD
                 foreach (var item in valeur)
                 {
                     SqlCommand commandUpdate = new SqlCommand("UPDATE StockIngredients SET Stock = Stock - @vStock WHERE Nom = @NomIngredient", connexion);
-                    commandUpdate.Parameters.AddWithValue("@vStock", item.Value);
                     commandUpdate.Parameters.AddWithValue("@NomIngredient", item.Key);
+                    commandUpdate.Parameters.AddWithValue("@vStock", item.Value);
+
                     commandUpdate.ExecuteNonQuery();
                 }
                 connexion.Close();
@@ -247,6 +248,43 @@ namespace RestaurantManager.Modèle.BDD
 
                 return Etape;
             }
+        }
+
+        /// <summary>
+        /// Sauvegarde une commande dans la table de comptabilité 
+        /// </summary>
+        /// <param name="recette">Recette a ajouter</param>
+        public void setCompta(string recette)
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO dbo.ComptaCommande (NomRecette) VALUES (@nomRecette)", connexion);
+
+                try
+                {
+                    command.Parameters.Add("@nomRecette", SqlDbType.VarChar, 50).Value = recette;
+
+                    connexion.Open();
+                    command.ExecuteNonQuery();
+                    connexion.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+        }
+
+        public int getMoney()
+        {
+            int Money = 0;
+
+
+
+
+            return Money;
         }
     }
 }

@@ -45,5 +45,15 @@ namespace RestaurantManager.Modèle.BDD
         {
             return Bdd.getPrice(recette);
         }
+
+        public int getMoney()
+        {
+            return Bdd.getMoney();
+        }
+
+        public void setCompta(string recette)
+        {
+            Bdd.setCompta(recette);
+        }
     }
 }
