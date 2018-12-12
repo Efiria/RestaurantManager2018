@@ -15,6 +15,10 @@ namespace RestaurantManager
         [STAThread]
         static void Main()
         {
+            /*BDDControleur controleur = new BDDControleur();
+            controleur.setCompta("Burger Vegan");
+            //controleur.clearCompta();*/
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Vue.RestaurantDisplay());

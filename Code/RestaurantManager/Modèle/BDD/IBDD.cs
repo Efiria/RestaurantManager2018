@@ -17,5 +17,6 @@ namespace RestaurantManager.Modèle.BDD
         List<string> getEtape(string Recette);
         void setCompta(string recette);
         int getMoney();
+        void clearCompta();
     }
 }

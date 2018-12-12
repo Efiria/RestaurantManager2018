@@ -260,31 +260,87 @@ namespace RestaurantManager.Modèle.BDD
 
             using (SqlConnection connexion = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("INSERT INTO dbo.ComptaCommande (NomRecette) VALUES (@nomRecette)", connexion);
 
-                try
-                {
-                    command.Parameters.Add("@nomRecette", SqlDbType.VarChar, 50).Value = recette;
+                SqlCommand command = new SqlCommand("SELECT NomRecette FROM dbo.ComptaCommande WHERE NomRecette = @Nom", connexion);
+                command.Parameters.AddWithValue("@Nom", recette);
 
-                    connexion.Open();
-                    command.ExecuteNonQuery();
-                    connexion.Close();
-                }
-                catch (Exception e)
+                connexion.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
-                    Console.WriteLine(e.Message);
+                    reader.Close();
+
+                    SqlCommand commandUpdate = new SqlCommand("UPDATE ComptaCommande SET Quantite = Quantite + 1 WHERE NomRecette = @nomRecette", connexion);
+                    commandUpdate.Parameters.Add("@nomRecette", SqlDbType.VarChar, 50).Value = recette;
+                    commandUpdate.ExecuteNonQuery();
                 }
+                else
+                {
+                    reader.Close();
+
+                    SqlCommand commandInsert = new SqlCommand("INSERT INTO dbo.ComptaCommande (NomRecette) VALUES (@nomRecette)", connexion);
+                    commandInsert.Parameters.Add("@nomRecette", SqlDbType.VarChar, 50).Value = recette;
+                    commandInsert.ExecuteNonQuery();
+                }
+                connexion.Close();
             }
         }
 
         public int getMoney()
         {
             int Money = 0;
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
 
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.ComptaCommande", connexion);
 
+                try
+                {
+                    connexion.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.Write(reader[1]);
 
+                        Money = Money + (int)reader[0];
+
+                        Console.Write(reader[3]);
+                        Console.WriteLine(reader[4]);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
 
             return Money;
+        }
+
+        public void clearCompta()
+        {
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("DELETE FROM dbo.ComptaCommande", connexion);
+
+                try
+                {
+                    connexion.Open();
+                    command.ExecuteReader();
+                    connexion.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
+
         }
     }
 }

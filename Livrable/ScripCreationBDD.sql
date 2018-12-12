@@ -77,6 +77,7 @@ CREATE TABLE Materiel(
 CREATE TABLE ComptaCommande(
 	ID                INT IDENTITY (1,1) NOT NULL ,
 	NomRecette        VARCHAR(50)  NOT NULL ,
+	Quantite		  INT DEFAULT  1,
 	CONSTRAINT ComptaCommande_PK PRIMARY KEY (ID)
 );
 

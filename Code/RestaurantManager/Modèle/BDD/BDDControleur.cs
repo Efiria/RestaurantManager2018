@@ -55,5 +55,10 @@ namespace RestaurantManager.Modèle.BDD
         {
             Bdd.setCompta(recette);
         }
+
+        public void clearCompta()
+        {
+            Bdd.clearCompta();
+        }
     }
 }
