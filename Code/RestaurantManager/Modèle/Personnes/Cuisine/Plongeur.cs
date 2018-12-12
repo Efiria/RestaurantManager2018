@@ -10,7 +10,10 @@ namespace RestaurantManager.Modèle.Personnes.Cuisine
     {
         public Plongeur()
         {
-            Console.WriteLine("Le plongeur nettoie les assittes sales"); 
+            if (serveur amène assiette)
+                {
+                Console.WriteLine("Le plongeur nettoie les assittes sales");
+                }
         }
     }
 }
