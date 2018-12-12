@@ -13,7 +13,7 @@ namespace RestaurantManager.Modèle.Lieux
 {
     public class Salle
     {
-        private readonly int TABLE_SIZE = 8;
+        private readonly int TABLE_SIZE = int.Parse(SettingsReader.ReadSettings("TailleDesTables"));
 
         public Restaurant Restaurant { get; private set; }
 
@@ -53,7 +53,7 @@ namespace RestaurantManager.Modèle.Lieux
                     Tables[i][j] = new Table[nbrTableParRang];
                     for (int k = 0; k < nbrTableParRang; k++)
                     {
-                        Tables[i][j][k] = new Table((i * 9) + ((k + 1) * 4), j * 5, TABLE_SIZE);
+                        Tables[i][j][k] = new Table((i * 18) + ((k + 1) * 4), j * (TABLE_SIZE / 2 + 1), TABLE_SIZE);
                     }
                 }
             }
@@ -90,7 +90,7 @@ namespace RestaurantManager.Modèle.Lieux
             if (Clients.Count < this.CapaciteMax && !PauseEnabled)
             {
                 int placesRestantes = this.CapaciteMax - this.Clients.Count;
-                int nbrOfClients = (placesRestantes > 8) ? this.random.Next(1, 8) : this.random.Next(1, placesRestantes);
+                int nbrOfClients = (placesRestantes > TABLE_SIZE) ? this.random.Next(1, TABLE_SIZE) : this.random.Next(1, placesRestantes);
 
                 List<Client> clients = new List<Client>();
 
