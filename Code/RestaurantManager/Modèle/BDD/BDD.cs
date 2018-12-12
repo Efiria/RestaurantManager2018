@@ -43,6 +43,40 @@ namespace RestaurantManager.Modèle.BDD
         }
 
         /// <summary>
+        /// Renvoi le prix d'une recette en int
+        /// </summary>
+        /// <param name="recette">Nom d'une recette ou l'on veut le prix</param>
+        /// <returns>Renvoi le prix d'une recette en int</returns>
+        public int getPrice(string recette)
+        {
+            int prix = 0;
+
+            string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
+
+            using (SqlConnection connexion = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT Prix FROM dbo.Recette WHERE Nom = @NomRecette", connexion);
+
+                try
+                {
+                    connexion.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        prix = (int)reader[0];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            return prix;
+        }
+
+        /// <summary>
         /// Recupere les clients qui ont reserver une table
         /// </summary>
         public void getReservation()
@@ -174,8 +208,11 @@ namespace RestaurantManager.Modèle.BDD
             }
         }
 
-
-        public void getEtape(string Recette)
+        /// <summary>
+        /// Recupere les etapes lors de la preparation d'une recette
+        /// </summary>
+        /// <param name="Recette">Recette ou l'on veut avoir les etapes</param>
+        public List<string> getEtape(string Recette)
         {
             string connectionString = "Data Source=(local);Initial Catalog=RestaurantManagerBDD;Integrated Security=true";
 
@@ -184,6 +221,7 @@ namespace RestaurantManager.Modèle.BDD
                 SqlCommand command = new SqlCommand("SELECT * FROM dbo.EtapeRecette WHERE NomRecette = @Recette ORDER BY NbEtape DESC", connexion);
                 command.Parameters.AddWithValue("@Recette", Recette);
 
+                List<string> Etape = new List<string>();
 
                 try
                 {
@@ -194,6 +232,9 @@ namespace RestaurantManager.Modèle.BDD
                         //Recupération des valeurs a ensuite stocker dans des variables
                         //0 = ID | 1 = Nom etc...
                         Console.Write(reader[1]);
+
+                        Etape.Add(reader[3].ToString());
+
                         Console.Write(reader[3]);
                         Console.WriteLine(reader[4]);
                     }
@@ -203,6 +244,8 @@ namespace RestaurantManager.Modèle.BDD
                 {
                     Console.WriteLine(e.Message);
                 }
+
+                return Etape;
             }
         }
     }

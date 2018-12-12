@@ -18,6 +18,9 @@ namespace RestaurantManager.Modèle.Lieux
 
         public Table[][][] Tables { get; private set; }
         public List<Client> Clients { get; private set; } = new List<Client>();
+        public List<AEmploye> Employes { get; private set; } = new List<AEmploye>();
+
+        private MaitreDHotel MaitreDHotel { get; set; }
 
         private static System.Timers.Timer aTimer;
         private readonly Random random = new Random();
@@ -26,9 +29,7 @@ namespace RestaurantManager.Modèle.Lieux
         private bool PauseEnabled { get; set; }
 
         private FabriquePersonne fabriquePersonne;
-
-        public MaitreDHotel maitreDHotel = new MaitreDHotel();
-
+        
         /// <summary>
         /// Génère une nouvelle salle de restaurant
         /// </summary>
@@ -55,6 +56,10 @@ namespace RestaurantManager.Modèle.Lieux
             CapaciteMax = nbrCarre * nbrRangParCarre * nbrTableParRang * 4;
 
             fabriquePersonne = new FabriquePersonne();
+
+            MaitreDHotel = fabriquePersonne.CreateEmploye(Roles.MaitreDHotel) as MaitreDHotel;
+            Employes.Add(MaitreDHotel);
+
 
             SetTimer();
         }
@@ -89,12 +94,12 @@ namespace RestaurantManager.Modèle.Lieux
                     Client client = fabriquePersonne.CreateClient(Caractere.Presse);
                     client.Id = this.Clients.Count;
                     this.Clients.Add(client);
-                    this.Restaurant.CallDisplay();
 
                     clients.Add(client);
                 }
                 this.Restaurant.CallConsole(nbrOfClients + " clients sont entrés sur " + CapaciteMax + " (" + this.Clients.Count + "/" + CapaciteMax + ")");
-                maitreDHotel.AssignToTable(this, clients);
+                MaitreDHotel.AssignToTable(this, clients);
+                this.Restaurant.CallDisplay();
             }
         }
 
