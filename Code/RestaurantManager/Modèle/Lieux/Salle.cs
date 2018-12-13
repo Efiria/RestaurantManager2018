@@ -25,7 +25,7 @@ namespace RestaurantManager.Modèle.Lieux
         public ChefDeRang ChefDeRang { get; set; }
         public Serveur Serveur { get; set; }
         public CommisDeSalle CommisDeSalle { get; set; }
-        
+
         private static System.Timers.Timer aTimer;
         private readonly Random random = new Random();
 
@@ -33,7 +33,7 @@ namespace RestaurantManager.Modèle.Lieux
         private bool PauseEnabled { get; set; }
 
         private FabriquePersonne fabriquePersonne;
-        
+
         /// <summary>
         /// Génère une nouvelle salle de restaurant
         /// </summary>
@@ -65,7 +65,7 @@ namespace RestaurantManager.Modèle.Lieux
 
             MaitreDHotel = fabriquePersonne.CreateEmploye(Roles.MaitreDHotel) as MaitreDHotel;
             Employes.Add(MaitreDHotel);
-            
+
             SetTimer();
         }
 
@@ -85,7 +85,7 @@ namespace RestaurantManager.Modèle.Lieux
         /// <summary>
         /// Génère un nouveau groupe de clients
         /// </summary>
-        public void NewClient ()
+        public void NewClient()
         {
             if (Clients.Count < this.CapaciteMax && !PauseEnabled)
             {
@@ -108,13 +108,24 @@ namespace RestaurantManager.Modèle.Lieux
             }
         }
 
-        private void CreateEmployes ()
+        private void CreateEmployes()
         {
             Roles[] EmploiNom = { Roles.MaitreDHotel, Roles.ChefDeRang, Roles.Serveur, Roles.CommisDeSalle };
             Thread[] Emploi = new Thread[EmploiNom.Length];
-            
+
             for (int i = 0; i < EmploiNom.Length; i++)
             {
+
+                /*Thread Test = new Thread(Pause);
+                Test.Start();
+
+                if (Test.ThreadState == ThreadState.Running)
+                {
+                    ThreadPool.QueueUserWorkItem(Bloc);
+                    Thread.Sleep(1000);
+                }*/
+
+                
                 switch (i)
                 {
                     case 0:
@@ -138,12 +149,20 @@ namespace RestaurantManager.Modèle.Lieux
                         CommisDeSalleThread.Name = EmploiNom[i].ToString();
                         break;
                 }
+                
+
             }
         }
 
         public void Pause()
         {
             this.PauseEnabled = !this.PauseEnabled;
+        }
+
+        public void Bloc(Object stateInfo)
+        {
+            string ex = "Thread secondaire en cours.";
+            this.Restaurant.CallConsole(ex);
         }
     }
 }
